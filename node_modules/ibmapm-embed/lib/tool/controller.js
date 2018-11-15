@@ -1,0 +1,44 @@
+'use strict';
+// Copyright IBM Corp. 2017. All Rights Reserved.
+// Node module: ibmapm
+// This file is licensed under the Apache License 2.0.
+// License text available at https://opensource.org/licenses/Apache-2.0
+var log4js = require('log4js');
+var logger = log4js.getLogger('knj_log');
+var EventEmitter = require('events').EventEmitter;
+var event = new EventEmitter();
+var k8sutil = require('ibmapm-restclient').getK8stool();
+var intervalObjRes;
+var count = 1;
+
+function DCController() {
+    intervalObjRes = setInterval(controlRes, 10000);
+    intervalObjRes.unref();
+}
+
+function controlRes() {
+
+    logger.debug('controller.js', 'controlRes', 'check ICp evn.',
+        k8sutil.getServicesConn().length, k8sutil.getNodeIPs().length,
+        global.SERVICEENDPOINT_REGISTED);
+
+    if (k8sutil.getServicesConn().length <= 0 || k8sutil.getNodeIPs().length <= 0) {
+        return;
+    }
+    if (!global.SERVICEENDPOINT_REGISTED) {
+        return;
+    }
+    logger.debug('controller.js', 'controlRes', 'Emit ready_4_res_on_icp event.');
+    event.emit('ready_4_res_on_icp');
+
+    if (count > 10) {
+        clearInterval(intervalObjRes);
+    }
+    count++;
+
+
+}
+DCController.prototype.getEvent = function getEvent() {
+    return event;
+};
+module.exports = new DCController();

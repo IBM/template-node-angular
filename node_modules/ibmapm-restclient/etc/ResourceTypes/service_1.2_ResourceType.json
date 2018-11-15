@@ -1,0 +1,69 @@
+{
+    "extraData": {
+        "metrics": {
+            "averageServiceResponseTime": {
+                "displaylabel": "Average Service Response Time",
+                "dataType": "float",
+                "name": "Average Service Response Time",
+                "description": "The average service response time of requests belonging to service in the last minute",
+                "units": "milliseconds"
+            },
+            "throughput": {
+                "displaylabel": "Throughput",
+                "dataType": "int",
+                "name": "Throughput",
+                "description": "The request throughput in the last minute",
+                "units": "requests"
+            },
+            "errorRate": {
+                "displaylabel": "Error Rate",
+                "dataType": "float",
+                "name": "Error Rate",
+                "description": "The request error rate in the last minute",
+                "units": "requests"
+            },
+            "dimensions": {
+                "requestName": {
+                    "displaylabel": "Request Name",
+                    "dataType": "string",
+                    "name": "Request Name",
+                    "description": "The request's Name.",
+                    "required": "y",
+                    "enumValues": {
+                        "Available": "Not"
+                    }
+                },
+                "resourceID": {
+                    "displaylabel": "Resource ID of Service",
+                    "dataType": "string",
+                    "name": "Resource ID of Service",
+                    "description": "The resource ID of the service",
+                    "required": "y",
+                    "enumValues": {
+                        "Available": "Not"
+                    }
+                },
+                "serviceInstanceResourceID": {
+                    "displaylabel": "Service Instance Resource ID",
+                    "dataType": "string",
+                    "name": "Service Instance Resource ID",
+                    "description": "The service instance resource ID."
+                }
+            }
+        }
+    },
+    "displaylabel": "Service",
+    "origin": "LWDC",
+    "evaluationPoint": "rte",
+    "name": "Service",
+    "description": "Service information",
+    "entityTypes": [
+        "service"
+    ],
+    "metadataVersion": "1.2",
+    "keyIndexName": "metadata//1.2/resourcetypes/resourcetype/service",
+    "tags": [
+        "metadata",
+        "topLevelResource"
+    ]
+}

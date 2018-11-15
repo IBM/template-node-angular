@@ -1,0 +1,70 @@
+{
+
+    "tenantID": "tenantid-0000-0000-0000-000000000000",
+    "metrics": "metric",
+    "AAR": "aar/middleware",
+    "ADR": "adr/middleware",
+    "dataqueues": [{
+            "name": "DC",
+            "frequency": 10,
+            "batchsize": 0
+        },
+        {
+            "name": "METRICS",
+            "frequency": 20,
+            "batchsize": 0
+        },
+        {
+            "name": "RESOURCE",
+            "frequency": 10,
+            "batchsize": 0
+        },
+        {
+            "name": "AAR",
+            "frequency": 10,
+            "batchsize": 0
+        },
+        {
+            "name": "ADR",
+            "frequency": 10,
+            "batchsize": 0
+        },
+        {
+            "name": "JSO",
+            "frequency": 10,
+            "batchsize": 0
+        },
+        {
+            "name": "META",
+            "frequency": 10,
+            "batchsize": 0
+        },
+        {
+            "name": "AMUI",
+            "frequency": 10,
+            "batchsize": 0
+        },
+        {
+            "name": "AMS",
+            "frequency": 10,
+            "batchsize": 0
+        },
+        {
+            "name": "QUERY",
+            "frequency": 10,
+            "batchsize": 0
+        }
+    ],
+    "consumers": [{
+            "name": "BAM",
+            "plugin_file": "/lib/plugins/BAMPlugin.js",
+            "listento": "DC,AAR,METRICS,RESOURCE,ADR,META,AMUI,AMS,QUERY",
+            "connections": []
+        },
+        {
+            "name": "APM",
+            "plugin_file": "/lib/plugins/BIPlugin.js",
+            "listento": "AAR,METRICS,JSO"
+        }
+    ]
+}

@@ -1,0 +1,124 @@
+'use strict';
+var log4js = require('log4js');
+var logger = log4js.getLogger('knj_log');
+var commontools = require('./common');
+const EventEmitter = require('events');
+var confCurr = {
+    ITCAM_DC_ENABLED: process.env.ITCAM_DC_ENABLED ? process.env.ITCAM_DC_ENABLED : true,
+    KNJ_ENABLE_TT: process.env.KNJ_ENABLE_TT ? process.env.KNJ_ENABLE_TT : true,
+    KNJ_ENABLE_DEEPDIVE: process.env.KNJ_ENABLE_DEEPDIVE ? process.env.KNJ_ENABLE_DEEPDIVE : false,
+    KNJ_DISABLE_METHODTRACE: process.env.KNJ_DISABLE_METHODTRACE ?
+        process.env.KNJ_DISABLE_METHODTRACE : false
+};
+var confDefault = {
+    ITCAM_DC_ENABLED: true,
+    KNJ_ENABLE_TT: true,
+    KNJ_ENABLE_DEEPDIVE: false,
+    KNJ_DISABLE_METHODTRACE: false
+};
+var confsvcLoop;
+class ConfigureService extends EventEmitter {
+    constructor() {
+        super();
+    }
+
+    refreshConf() {
+        // get the configure from conf service.
+        const conf = {
+            ITCAM_DC_ENABLED: false,
+            KNJ_ENABLE_TT: true,
+            KNJ_ENABLE_DEEPDIVE: true,
+            KNJ_DISABLE_METHODTRACE: true
+        };
+        if (!this.changed(conf)) {
+            return;
+        }
+        logger.debug('Refreshing configuration.', conf, confCurr);
+        this.parseConf(conf);
+    }
+
+    parseConf(conf) {
+        this.emit('conf_update', conf);
+        if (conf.ITCAM_DC_ENABLED !== confCurr.ITCAM_DC_ENABLED) {
+            this.emit('dc_conf_update', conf);
+        }
+        if (conf.KNJ_ENABLE_TT !== confCurr.KNJ_ENABLE_TT) {
+            this.emit('tt_conf_update', conf);
+        }
+        if (conf.KNJ_ENABLE_DEEPDIVE !== confCurr.KNJ_ENABLE_DEEPDIVE) {
+            this.emit('dd_conf_update', conf);
+        }
+        if (conf.KNJ_DISABLE_METHODTRACE !== confCurr.KNJ_DISABLE_METHODTRACE) {
+            this.emit('mt_conf_update', conf);
+        }
+        this.saveConf(conf);
+    }
+    changed(conf) {
+        if (!this.validated(conf)) {
+            return false;
+        }
+        if (!commontools.testTrue(conf.ITCAM_DC_ENABLED)) {
+            conf.KNJ_ENABLE_TT = false;
+            conf.KNJ_ENABLE_DEEPDIVE = false;
+            conf.KNJ_DISABLE_METHODTRACE = false;
+        }
+        var changed = false;
+        for (const key in conf) {
+            if (conf.hasOwnProperty(key) && conf[key] !== confCurr[key]) {
+                changed = true;
+            }
+        }
+        return changed;
+    }
+
+    saveConf(conf) {
+
+        if (!this.validated(conf)) {
+            return;
+        }
+        if (!commontools.testTrue(conf.ITCAM_DC_ENABLED)) {
+            confCurr.ITCAM_DC_ENABLED = false;
+            confCurr.KNJ_ENABLE_TT = false;
+            confCurr.KNJ_ENABLE_DEEPDIVE = false;
+            confCurr.KNJ_DISABLE_METHODTRACE = false;
+            return;
+        }
+
+        for (const key in conf) {
+            if (conf.hasOwnProperty(key)) {
+                confCurr[key] = conf[key];
+            }
+        }
+    }
+
+    validated(conf) {
+        if (!conf) {
+            return false;
+        }
+        for (const key in confDefault) {
+            if (!conf.hasOwnProperty(key)) {
+                logger.error('The configuration is not correct, some properte missed. ', key);
+                return false;
+            }
+        }
+        return true;
+    }
+
+    getCurrentConfigure() {
+        return confCurr;
+    }
+
+    stop() {
+        if (confsvcLoop) {
+            clearInterval(confsvcLoop);
+        }
+    }
+}
+
+
+const cs = new ConfigureService();
+confsvcLoop = setInterval(function rfconf() {
+    cs.refreshConf();
+}, 60000);
+confsvcLoop.unref();
+module.exports.ConfigureService = cs;

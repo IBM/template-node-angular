@@ -1,0 +1,34 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]; then
+	echo "Usage: $0 <full path of main js file> [<data collector folder>]"
+	exit 2
+fi
+
+MAIN_JS_FILE=$1
+
+
+DC_FOLDER=`pwd`
+if [ $# -ge 2 ]; then
+	DC_FOLDER=$2
+fi
+
+if [ ! -d "${DC_FOLDER}" ]; then
+	echo "Folder ${DC_FOLDER} doesn't exist !!"
+	exit 1
+fi
+
+if [ ! -f "${MAIN_JS_FILE}" ]; then
+	echo "File ${MAIN_JS_FILE} doesn't exist !!"
+	exit 2
+fi
+
+echo "require ('${DC_FOLDER}')" > "${MAIN_JS_FILE}.tmp"
+grep -v "ibmapm" "${MAIN_JS_FILE}" >> "${MAIN_JS_FILE}.tmp"
+
+mv "${MAIN_JS_FILE}" "{MAIN_JS_FILE}.ori"
+mv "${MAIN_JS_FILE}.tmp" "${MAIN_JS_FILE}"
+
+echo "Finished !"
+
+exit 0

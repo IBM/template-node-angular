@@ -1,0 +1,297 @@
+// Copyright IBM Corp. 2017. All Rights Reserved.
+// Node module: ibmapm
+// This file is licensed under the Apache License 2.0.
+// License text available at https://opensource.org/licenses/Apache-2.0
+'use strict';
+var fs = require('fs');
+var path = require('path');
+var logger = require('../plugins/logutil').getLogger('config.js');
+var properties = require('properties');
+var rcutil = require('../plugins/util');
+var globalEnvPath = process.env.IBM_APM_NODEDC_GEPATH ? process.env.IBM_APM_NODEDC_GEPATH :
+    __dirname + '/../../../../etc/global.environment';
+
+function PluginConfig() {
+    initFromGlobalEnv();
+}
+
+PluginConfig.prototype.queuetypes = {
+    DC: 'DC',
+    METRICS: 'METRICS',
+    RESOURCE: 'RESOURCE',
+    AAR: 'AAR',
+    JSO: 'JSO',
+    ADR: 'ADR',
+    META: 'META',
+    AMUI: 'AMUI',
+    AMS: 'AMS',
+    QUERY: 'QUERY'
+};
+PluginConfig.prototype.cfg = {
+    //    ingressURL : undefined,
+    tenantID: 'tenantid-0000-0000-0000-000000000000',
+    metrics: 'metric',
+    AAR: 'aar/middleware',
+    ADR: 'adr/middleware',
+
+    // target server
+    serverURL: '',
+    sslKeyFile: '',
+    sslKeyFileUrl: '',
+    sslKeyFilePassword: '',
+    apmSNI: '',
+
+    sendTransactionTrackingData: true,
+    sendDiagnosticData: true,
+    sendMethodTraceData: true
+};
+PluginConfig.prototype.globalEnv = {};
+
+PluginConfig.prototype.consumerInsts = [];
+PluginConfig.prototype.dcconsumers = [];
+PluginConfig.prototype.resourceconsumers = [];
+PluginConfig.prototype.aarconsumers = [];
+PluginConfig.prototype.adrconsumers = [];
+PluginConfig.prototype.metricconsumers = [];
+PluginConfig.prototype.jsoconsumers = [];
+PluginConfig.prototype.metaconsumers = [];
+PluginConfig.prototype.amuiconsumers = [];
+PluginConfig.prototype.amsconsumers = [];
+PluginConfig.prototype.queryconsumers = [];
+PluginConfig.prototype.queueMaxSize = process.env.QUEUE_MAX_SIZE ? process.env.QUEUE_MAX_SIZE : 1000;
+PluginConfig.prototype.dataqueues = {};
+
+PluginConfig.prototype.dcqueue = {
+    freq: 60 * 1000,
+    isBatch: true,
+    batchSize: 10
+};
+PluginConfig.prototype.metricqueue = {
+    freq: 60 * 1000,
+    isBatch: true,
+    batchSize: 10
+};
+PluginConfig.prototype.resourcequeue = {
+    freq: 60 * 1000,
+    isBatch: true,
+    batchSize: 10
+};
+PluginConfig.prototype.aarqueue = {
+    freq: 60 * 1000,
+    isBatch: true,
+    batchSize: 10
+};
+PluginConfig.prototype.adrqueue = {
+    freq: 60 * 1000,
+    isBatch: true,
+    batchSize: 10
+};
+PluginConfig.prototype.jsoqueue = {
+    freq: 60 * 1000,
+    isBatch: true,
+    batchSize: 10
+};
+PluginConfig.prototype.metaqueue = {
+    freq: 60 * 1000,
+    isBatch: true,
+    batchSize: 10
+};
+PluginConfig.prototype.amuiqueue = {
+    freq: 60 * 1000,
+    isBatch: true,
+    batchSize: 10
+};
+
+// internal queue, should not be changed by configuration file
+PluginConfig.prototype.amsqueue = {
+    freq: 60 * 1000,
+    isBatch: true,
+    batchSize: 1
+};
+// internal queue, should not be changed by configuration file
+PluginConfig.prototype.queryqueue = {
+    freq: 60 * 1000,
+    isBatch: false
+};
+PluginConfig.prototype.destArr = [];
+
+PluginConfig.prototype.plugins = [];
+
+
+PluginConfig.prototype.init = function() {
+    // load configuration from ENV
+    if (process.env.APM_BM_SECURE_GATEWAY) {
+        var tempConfig = {};
+        tempConfig.serverURL = process.env.APM_BM_SECURE_GATEWAY;
+
+        if (process.env.APM_KEYFILE_URL) {
+            tempConfig.sslKeyFileUrl = process.env.APM_KEYFILE_URL;
+        }
+
+        if (process.env.APM_KEYFILE_PSWD) {
+            tempConfig.sslKeyFilePassword = process.env.APM_KEYFILE_PSWD;
+        }
+        PluginConfig.prototype.destArr.push(tempConfig);
+    }
+
+
+};
+
+PluginConfig.prototype.loadPluginsConf = function(filename, callback) {
+    logger.debug('config.js', 'loadPluginsConf', 'loadPluginsConf' + filename);
+    logger.debug('config.js', 'loadPluginsConf', 'current dir ' + __dirname);
+
+    try {
+        var fileContent = fs.readFileSync(filename, 'utf8');
+        var jsonContent = JSON.parse(fileContent);
+        logger.debug('config.js', 'loadPluginsConf', 'Content of', filename, jsonContent);
+        this.cfg.tenantID = process.env.APM_TENANT_ID ? process.env.APM_TENANT_ID :
+            this.globalEnv.APM_TENANT_ID || jsonContent.tenantID;
+        this.cfg.ingressURL = jsonContent.ingressURL;
+        if (jsonContent.dataqueues) {
+            // init queue's defination.
+            this.dataqueues = jsonContent.dataqueues;
+            for (let icon = 0; icon < jsonContent.consumers.length; icon++) {
+                let element = jsonContent.consumers[icon];
+                if (element.name.toUpperCase() === this.queuetypes.DC) {
+                    this.dcqueue.freq = element.frequency * 1000;
+                    this.dcqueue.batchSize = element.batchsize;
+                }
+
+                if (element.name.toUpperCase() === this.queuetypes.METRICS) {
+                    this.metricqueue.freq = element.frequency * 1000; ;
+                    this.metricqueue.batchSize = element.batchsize;
+                }
+
+                if (element.name.toUpperCase() === this.queuetypes.RESOURCE) {
+                    this.resourcequeue.freq = element.frequency * 1000; ;
+                    this.resourcequeue.batchSize = element.batchsize;
+                }
+
+                if (element.name.toUpperCase() === this.queuetypes.AAR) {
+                    this.aarqueue.freq = element.frequency * 1000; ;
+                    this.aarqueue.batchSize = element.batchsize;
+                }
+
+                if (element.name.toUpperCase() === this.queuetypes.ADR) {
+                    this.adrqueue.freq = element.frequency * 1000; ;
+                    this.adrqueue.batchSize = element.batchsize;
+                }
+                if (element.name.toUpperCase() === this.queuetypes.JSO) {
+                    this.jsoqueue.freq = element.frequency * 1000; ;
+                    this.jsoqueue.batchSize = element.batchsize;
+                }
+                if (element.name.toUpperCase() === this.queuetypes.META) {
+                    this.metaqueue.freq = element.frequency * 1000; ;
+                    this.metaqueue.batchSize = element.batchsize;
+                }
+                if (element.name.toUpperCase() === this.queuetypes.AMUI) {
+                    this.amuiqueue.freq = element.frequency * 1000; ;
+                    this.amuiqueue.batchSize = element.batchsize;
+                }
+                if (element.name.toUpperCase() === this.queuetypes.AMS) {
+                    this.amsqueue.freq = element.frequency * 1000; ;
+                    this.amsqueue.batchSize = element.batchsize;
+                }
+                if (element.name.toUpperCase() === this.queuetypes.QUERY) {
+                    this.queryqueue.freq = element.frequency * 1000; ;
+                    this.queryqueue.batchSize = element.batchsize;
+                }
+            }
+        }
+
+        for (var i = 0; i < jsonContent.consumers.length; i++) {
+            try {
+                this.plugins[jsonContent.consumers[i].name] = jsonContent.consumers[i];
+                var pinst = require(path.join(__dirname, '/../../' +
+                    jsonContent.consumers[i].plugin_file));
+                var queuearr = jsonContent.consumers[i].listento.split(',');
+                if (queuearr && queuearr.length > 0) {
+                    if (queuearr.indexOf(this.queuetypes.DC) > -1) {
+                        this.dcconsumers.push(pinst);
+                    }
+                    if (queuearr.indexOf(this.queuetypes.METRICS) > -1) {
+                        this.metricconsumers.push(pinst);
+                    }
+                    if (queuearr.indexOf(this.queuetypes.RESOURCE) > -1) {
+                        this.resourceconsumers.push(pinst);
+                    }
+                    if (queuearr.indexOf(this.queuetypes.AAR) > -1) {
+                        this.aarconsumers.push(pinst);
+                    }
+                    if (queuearr.indexOf(this.queuetypes.ADR) > -1) {
+                        this.adrconsumers.push(pinst);
+                    }
+                    if (queuearr.indexOf(this.queuetypes.JSO) > -1) {
+                        this.jsoconsumers.push(pinst);
+                    }
+                    if (queuearr.indexOf(this.queuetypes.META) > -1) {
+                        this.metaconsumers.push(pinst);
+                    }
+                    if (queuearr.indexOf(this.queuetypes.AMUI) > -1) {
+                        this.amuiconsumers.push(pinst);
+                    }
+                    if (queuearr.indexOf(this.queuetypes.AMS) > -1) {
+                        this.amsconsumers.push(pinst);
+                    }
+                    if (queuearr.indexOf(this.queuetypes.QUERY) > -1) {
+                        this.queryconsumers.push(pinst);
+                    }
+                }
+            } catch (e) {
+                logger.error('failed to instance plugin.' + jsonContent.consumers[i].plugin_file);
+                logger.error(e);
+            }
+            this.consumerInsts.push(pinst);
+        }
+        if (callback) {
+            callback(jsonContent);
+        }
+        return;
+    } catch (e) {
+        logger.error('failed to read configuration.');
+        logger.error(e);
+    }
+};
+
+PluginConfig.prototype.isValidConn = function(connection) {
+    if (!connection) {
+        return false;
+    }
+    if (!connection.server_url) {
+        return false;
+    }
+    return true;
+};
+
+
+function initFromGlobalEnv() {
+    let globalenvfile = 'global.environment';
+    if (!fs.existsSync(globalenvfile) && fs.existsSync(globalEnvPath)) {
+        globalenvfile = globalEnvPath;
+    }
+    if (fs.existsSync(globalenvfile)) {
+        let globalCont = fs.readFileSync(globalenvfile);
+        PluginConfig.prototype.globalEnv = properties.parse(globalCont.toString(), {
+            separators: '=',
+            comments: [';', '@', '#']
+        });
+        for (const key in PluginConfig.prototype.globalEnv) {
+            if (PluginConfig.prototype.globalEnv.hasOwnProperty(key)) {
+                const element = PluginConfig.prototype.globalEnv[key].trim();
+                if (element.indexOf('@{') === 0) {
+                    PluginConfig.prototype.globalEnv[key] = undefined;
+                    continue;
+                }
+                if (rcutil.isBase64(element)) {
+                    PluginConfig.prototype.globalEnv[key] = rcutil.decBase64(element);
+                }
+            }
+        }
+
+        logger.debug('config.js', 'initFromGlobalEnv', globalenvfile,
+            PluginConfig.prototype.globalEnv);
+    }
+}
+
+module.exports.pluginConfig = new PluginConfig();

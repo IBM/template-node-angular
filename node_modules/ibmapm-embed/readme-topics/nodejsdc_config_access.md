@@ -1,0 +1,55 @@
+# Configuring the data collector to access Kubernetes resources
+
+If your service account has no access to Kubernetes resources, authorize it with proper access. The following procedure authorizes the service account using RBAC authorization. To use other authorization methods, see [Reference Documentation](https://kubernetes.io/docs/admin/authorization/) of Kubernetes.
+
+## Procedure
+
+1. Bind the service to a **Role** that has access to query Kubernetes resources in the RBAC mode.
+
+    a. Prepare a `rolebinding.yaml` file that has the following content:
+
+    Example:
+    ```
+    kind: RoleBinding
+    apiVersion: rbac.authorization.k8s.io/v1beta1
+    metadata:
+      name: get-pods
+      namespace: ops-am
+    subjects:
+    - kind: User
+      name: system:serviceaccount:ops-am:default
+      apiGroup: rbac.authorization.k8s.io
+    roleRef:
+      kind: ClusterRole
+      name: admin
+      apiGroup: rbac.authorization.k8s.io
+    ```
+    **Important**: Change the items in the example to match your own IBM Cloud Private environment.
+
+    b. Run the following command to bind the role:
+    ```
+    kubectl create -f rolebinding.yaml
+    ```
+2. Bind the service to a **ClusterRole** that has access to query Kubernetes resources in the RBAC mode.
+    
+    a. Prepare a `clusterrolebinding.yaml` file that has the following content:
+    ```
+    kind: ClusterRoleBinding
+    apiVersion: rbac.authorization.k8s.io/v1beta1
+    metadata:
+      name: list-cluster
+    subjects:
+    - kind: User
+      name: system:serviceaccount:ops-am:default
+      apiGroup: rbac.authorization.k8s.io
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: cluster-admin
+    ```
+    b. Run the following command to bind the role:
+    ```
+    kubectl create -f clusterrolebinding.yaml
+    ``` 
+
+Parent topic: [Node.js Data Collector for IBM Application Performance Management (APM)](../README.md)

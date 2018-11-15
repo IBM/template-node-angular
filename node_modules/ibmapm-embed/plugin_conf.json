@@ -1,0 +1,30 @@
+{
+    "filters":
+    [
+    	{
+    		"pattern": ".+\\.png$",
+    		"to": ""
+    	},
+    	{
+    		"pattern": ".+\\.jpg$",
+    		"to": ""
+    	},
+    	{
+    		"pattern": "GET /js/.+\\.js$",
+    		"to": ""
+    	},
+    	{
+    		"pattern": "GET /css/.+\\.css$",
+    		"to": ""
+    	}
+    ],
+    "deepDive": {
+        "minClockTrace": 1,
+        "minClockStack": 100,
+        "minCpuTrace": 0,
+        "minCpuStack": 0,
+        "eventsPerFile": 200,
+        "fileCommitTime": 60,
+        "sampling":10
+    }
+}

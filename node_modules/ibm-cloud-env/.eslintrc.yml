@@ -1,0 +1,13 @@
+env:
+  node: true
+  es6: true
+  mocha: true
+
+rules:
+  strict: 0
+  no-var: 2
+  no-console: 0
+  indent: ["error", "tab", { "SwitchCase": 1}]
+
+extends: eslint:recommended
+

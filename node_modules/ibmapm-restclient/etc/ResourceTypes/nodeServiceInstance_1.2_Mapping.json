@@ -1,0 +1,479 @@
+{
+  "doctype": "mapping",
+  "productCode": "LWDC",
+  "extraData": {
+    "entity-properties": [],
+    "resource-properties": {
+      "relationships": [],
+      "members": [{
+        "metricIntervals": "1",
+        "use": "nodeServiceInstance",
+        "keys": "",
+        "when": "$odiObject *eq nodeServiceInstance",
+        "propertyIntervals": "1",
+        "tableName": "nodeServiceInstance"
+      }],
+      "overrides": [{
+        "set": ["$odiAttribute *eq resourceID",
+        "$odiLabel *eq Resource ID",
+        "$odiDescription *eq The resource ID.",
+        "$displayName *eq true",
+        "$fieldRequired *eq true",
+        "$fieldOutput *eq property",
+        "$odiDataType *eq string",
+        "$enumIVal *eq Available",
+        "$enumEVal *eq Not"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq resourceID"
+      },
+      {
+        "set": ["$odiAttribute *eq runtimeResourceID",
+        "$odiLabel *eq Runtime Resource ID",
+        "$odiDescription *eq The runtime resource ID.",
+        "$fieldOutput *eq property",
+        "$odiDataType *eq string"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq runtimeResourceID"
+      },
+      {
+        "set": ["$odiAttribute *eq npmResourceID",
+        "$odiLabel *eq NPM Resource ID",
+        "$odiDescription *eq The npm resource ID.",
+        "$fieldOutput *eq property",
+        "$odiDataType *eq string"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq npmResourceID"
+      },
+      {
+        "set": ["$odiAttribute *eq serviceResourceID",
+        "$odiLabel *eq Service Resource ID",
+        "$odiDescription *eq The service resource ID.",
+        "$fieldOutput *eq property",
+        "$odiDataType *eq string"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq serviceResourceID"
+      },
+      {
+        "set": ["$odiAttribute *eq _componentType",
+        "$odiLabel *eq Component Type",
+        "$odiDescription *eq The component type.",
+        "$fieldRequired *eq true",
+        "$fieldOutput *eq property",
+        "$odiDataType *eq string"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq _componentType"
+      },
+      {
+        "set": ["$odiAttribute *eq requestRate",
+        "$odiLabel *eq Request Rate",
+        "$odiDescription *eq The application request rate at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq double",
+        "$useUnits *eq requests\/minute"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq requestRate"
+      },
+      {
+        "set": ["$odiAttribute *eq averageResponseTime",
+        "$odiLabel *eq Average Response Time",
+        "$odiDescription *eq The average response time of the application at the latest sampling interval",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq averageResponseTime"
+      },
+      {
+        "set": ["$odiAttribute *eq slowestResponseTime",
+        "$odiLabel *eq Slowest Response Time",
+        "$odiDescription *eq The slowest response time at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq double",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq slowestResponseTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_socketioRequestRate",
+        "$odiLabel *eq Socketio Request Rate",
+        "$odiDescription *eq The application request rate at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq double",
+        "$useUnits *eq requests\/minute"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_socketioRequestRate"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_socketioAverageResponseTime",
+        "$odiLabel *eq Socketio Average Response Time",
+        "$odiDescription *eq The average response time of the application at the latest sampling interval.",
+        "$displayName *eq true",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_socketioAverageResponseTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_socketioMaxRespTime",
+        "$odiLabel *eq Socketio Slowest Response Time",
+        "$odiDescription *eq The slowest response time at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_socketioMaxRespTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_mysqlRequestRate",
+        "$odiDescription *eq The application request rate at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq double",
+        "$useUnits *eq requests\/minute",
+        "$odiLabel *eq Mysql Request Rate"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_mysqlRequestRate"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_mysqlAverageResponseTime",
+        "$odiLabel *eq Mysql Average Response Time",
+        "$odiDescription *eq The average response time of the application at the latest sampling interval.",
+        "$displayName *eq true",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_mysqlAverageResponseTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_mysqlMaxRespTime",
+        "$odiLabel *eq Mysql Slowest Response Time",
+        "$odiDescription *eq The slowest response time at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_mysqlMaxRespTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_mongoRequestRate",
+        "$odiLabel *eq Mongo Request Rate",
+        "$odiDescription *eq The application request rate at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq double",
+        "$useUnits *eq requests\/minute"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_mongoRequestRate"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_mongoAverageResponseTime",
+        "$odiLabel *eq Mongo Average Response Time",
+        "$odiDescription *eq The average response time of the application at the latest sampling interval.",
+        "$displayName *eq true",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_mongoAverageResponseTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_mongoMaxRespTime",
+        "$odiLabel *eq Mongo Slowest Response Time",
+        "$odiDescription *eq The slowest response time at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_mongoMaxRespTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_mqttRequestRate",
+        "$odiLabel *eq Mqtt Request Rate",
+        "$odiDescription *eq The application request rate at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq double",
+        "$useUnits *eq requests\/minute"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_mqttRequestRate"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_mqttAverageResponseTime",
+        "$odiLabel *eq Mqtt Average Response Time",
+        "$odiDescription *eq The average response time of the application at the latest sampling interval.",
+        "$displayName *eq true",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_mqttAverageResponseTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_mqttMaxRespTime",
+        "$odiLabel *eq Mqtt Slowest Response Time",
+        "$odiDescription *eq The slowest response time at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_mqttMaxRespTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_mqlightRequestRate",
+        "$odiLabel *eq Mqlight Request Rate",
+        "$odiDescription *eq The application request rate at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq double",
+        "$useUnits *eq requests\/minute"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_mqlightRequestRate"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_mqlightAverageResponseTime",
+        "$odiLabel *eq Mqlight Average Response Time",
+        "$odiDescription *eq The average response time of the application at the latest sampling interval.",
+        "$displayName *eq true",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_mqlightAverageResponseTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_mqlightMaxRespTime",
+        "$odiLabel *eq Mqlight Slowest Response Time",
+        "$odiDescription *eq The slowest response time at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_mqlightMaxRespTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_leveldbRequestRate",
+        "$odiLabel *eq Leveldb Request Rate",
+        "$odiDescription *eq The application request rate at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq double",
+        "$useUnits *eq requests\/minute"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_leveldbRequestRate"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_leveldbAverageResponseTime",
+        "$odiLabel *eq Leveldb Average Response Time",
+        "$odiDescription *eq The average response time of the application at the latest sampling interval.",
+        "$displayName *eq true",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_leveldbAverageResponseTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_leveldbMaxRespTime",
+        "$odiLabel *eq Leveldb Slowest Response Time",
+        "$odiDescription *eq The slowest response time at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_leveldbMaxRespTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_redisRequestRate",
+        "$odiLabel *eq Redis Request Rate",
+        "$odiDescription *eq The application request rate at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq double",
+        "$useUnits *eq requests\/minute"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_redisRequestRate"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_redisAverageResponseTime",
+        "$odiLabel *eq Redis Average Response Time",
+        "$odiDescription *eq The average response time of the application at the latest sampling interval.",
+        "$displayName *eq true",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_redisAverageResponseTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_redisMaxRespTime",
+        "$odiLabel *eq Redis Slowest Response Time",
+        "$odiDescription *eq The slowest response time at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_redisMaxRespTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_riakRequestRate",
+        "$odiLabel *eq Riak Request Rate",
+        "$odiDescription *eq The application request rate at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq double",
+        "$useUnits *eq requests\/minute"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_riakRequestRate"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_riakAverageResponseTime",
+        "$odiLabel *eq Riak Average Response Time",
+        "$odiDescription *eq The average response time of the application at the latest sampling interval.",
+        "$displayName *eq true",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_riakAverageResponseTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_riakMaxRespTime",
+        "$odiLabel *eq Riak Slowest Response Time",
+        "$odiDescription *eq The slowest response time at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_riakMaxRespTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_memcachedRequestRate",
+        "$odiLabel *eq Memcached Request Rate",
+        "$odiDescription *eq The application request rate at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq double",
+        "$useUnits *eq requests\/minute"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_memcachedRequestRate"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_memcachedAverageResponseTime",
+        "$odiLabel *eq Memcached Average Response Time",
+        "$odiDescription *eq The average response time of the application at the latest sampling interval.",
+        "$displayName *eq true",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_memcachedAverageResponseTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_memcachedMaxRespTime",
+        "$odiLabel *eq Memcached Slowest Response Time",
+        "$odiDescription *eq The slowest response time at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_memcachedMaxRespTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_oracledbRequestRate",
+        "$odiLabel *eq Oracledb Request Rate",
+        "$odiDescription *eq The application request rate at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq double",
+        "$useUnits *eq requests\/minute"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_oracledbRequestRate"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_oracledbAverageResponseTime",
+        "$odiLabel *eq Oracledb Average Response Time",
+        "$odiDescription *eq The average response time of the application at the latest sampling interval.",
+        "$displayName *eq true",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_oracledbAverageResponseTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_oracledbMaxRespTime",
+        "$odiLabel *eq Oracledb Slowest Response Time",
+        "$odiDescription *eq The slowest response time at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_oracledbMaxRespTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_oracleRequestRate",
+        "$odiLabel *eq Oracle Request Rate",
+        "$odiDescription *eq The application request rate at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq double",
+        "$useUnits *eq requests\/minute"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_oracleRequestRate"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_oracleAverageResponseTime",
+        "$odiLabel *eq Oracle Average Response Time",
+        "$odiDescription *eq The average response time of the application at the latest sampling interval.",
+        "$displayName *eq true",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_oracleAverageResponseTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_oracleMaxRespTime",
+        "$odiLabel *eq Oracle Slowest Response Time",
+        "$odiDescription *eq The slowest response time at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_oracleMaxRespTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_strongoracleRequestRate",
+        "$odiLabel *eq Strongoracle Request Rate",
+        "$odiDescription *eq The application request rate at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq double",
+        "$useUnits *eq requests\/minute"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_strongoracleRequestRate"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_strongoracleAverageResponseTime",
+        "$odiLabel *eq Strongoracle Average Response Time",
+        "$odiDescription *eq The average response time of the application at the latest sampling interval.",
+        "$displayName *eq true",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_strongoracleAverageResponseTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_strongoracleMaxRespTime",
+        "$odiLabel *eq Strongoracle Slowest Response Time",
+        "$odiDescription *eq The slowest response time at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_strongoracleMaxRespTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_postgresqlRequestRate",
+        "$odiLabel *eq postgresql Request Rate",
+        "$odiDescription *eq The application request rate at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq double",
+        "$useUnits *eq requests\/minute"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_postgresqlRequestRate"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_postgresqlAverageResponseTime",
+        "$odiLabel *eq postgresql Average Response Time",
+        "$odiDescription *eq The average response time of the application at the latest sampling interval.",
+        "$displayName *eq true",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_postgresqlAverageResponseTime"
+      },
+      {
+        "set": ["$odiAttribute *eq reqSummary_postgresqlMaxRespTime",
+        "$odiLabel *eq postgresql Slowest Response Time",
+        "$odiDescription *eq The slowest response time at the latest sampling interval.",
+        "$fieldOutput *eq metric",
+        "$odiDataType *eq int",
+        "$useUnits *eq milliseconds"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq reqSummary_postgresqlMaxRespTime"
+      },
+      {
+        "set": ["$odiAttribute *eq requestErrorRate",
+        "$odiLabel *eq Error Rate",
+        "$odiDescription *eq The error rate of application requests at the latest sampling interval",
+        "$fieldOutput *eq metric",
+        "$useUnits *eq percent",
+        "$odiDataType *eq double"],
+        "when": "$odiObject *eq nodeServiceInstance *and $odiAttribute *eq requestErrorRate"
+      }],
+      "properties": [{
+        "datatype": "string",
+        "values": ["Resource"],
+        "displaylabel": "Class",
+        "name": "Class",
+        "description": ""
+      }]
+    }
+  },
+  "displaylabel": "Node DC Service Instance",
+  "description": "Node.js service and status information",
+  "entityTypes": ["nodeServiceInstance"],
+  "source": "Collector",
+  "type": "nodeServiceInstance",
+  "version": "1.2",
+  "uniqueId": "metadata\/\/1.2\/resourcemaps\/resourcemap\/nodeServiceInstance",
+  "tags": ["mapping"],
+  "timestamp": "2018-07-12T11:40:24.997+08:00"
+}

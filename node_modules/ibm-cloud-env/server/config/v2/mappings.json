@@ -1,0 +1,60 @@
+{
+  "version": 2,
+  "var1": {
+    "file_var1": {
+      "searchPatterns": [
+        "file:/test/cases/test-file-plain-text.txt"
+      ]
+    },
+    "cf_var1": {
+      "searchPatterns": [
+        "cloudfoundry:service1-name1"
+      ]
+    },
+    "env_var1": {
+      "searchPatterns": [
+        "env:ENV_VAR_STRING"
+      ]
+    },
+    "bad_var1": {
+      "searchPatterns": [
+        "env:asdasd:$asdasd",
+        "asdasdasd:asdasd:asdasd"
+      ]
+    }
+  },
+  "var2": {
+    "file_var2": {
+      "searchPatterns": [
+        "file:/test/cases/test-file-json-object.json:$.level1"
+      ]
+    },
+    "cf_var2": {
+      "searchPatterns": [
+        "cloudfoundry:$.service1[0].credentials.username"
+      ]
+    },
+    "env_var2": {
+      "searchPatterns": [
+        "env:ENV_VAR_JSON"
+      ]
+    }
+  },
+  "var3": {
+    "cf_var3": {
+      "searchPatterns": [
+        "cloudfoundry:$.application_name"
+      ]
+    },
+    "env_var3": {
+      "searchPatterns": [
+        "env:ENV_VAR_JSON:$.credentials.username"
+      ]
+    },
+    "bad_var3": {
+      "searchPatterns": [
+        "file:/invalid-file-name.txt"
+      ]
+    }
+  }
+}

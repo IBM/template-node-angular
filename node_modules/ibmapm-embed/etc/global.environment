@@ -1,0 +1,14 @@
+# APM Server url http://apmserver.com or https://apmserver.com:443
+APM_BM_GATEWAY_URL=@{APM_SERVER_URL}
+APM_KEYFILE=keyfile.p12
+APM_KEYFILE_PSWD=@{APM_SERVER_KEYFILE_PASSWORD}
+# By default, APM_SNI=default.server.
+# For SaaS please assign it as the hostname of GATEWAY_URL. 
+# For onPremise, please assign it as your keyfile's Owner/CN=, if there is *, please replace it in your own case.
+#APM_SNI=@{APM_SERVER_SNI}
+
+IBM_APM_SERVER_INGRESS_URL=@{IBM_APM_SERVER_INGRESS_URL} 
+APM_TENANT_ID=@{APM_TENANT_ID} 
+RESOURCEMGMT_SERVICE_BASE_PATH = @{RESOURCEMGMT_SERVICE_BASE_PATH}
+METRICS_SERVICE_BASE_PATH = @{METRICS_SERVICE_BASE_PATH}
+UI_SERVICE_BASE_PATH =@{UI_SERVICE_BASE_PATH}

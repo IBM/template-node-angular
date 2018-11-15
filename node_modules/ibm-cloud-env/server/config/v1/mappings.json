@@ -1,0 +1,75 @@
+{
+	"version": 1,
+	"file_var1": {
+		"searchPatterns": [
+			"file:/test/cases/test-file-plain-text.txt"
+		]
+	},
+	"file_var2": {
+		"searchPatterns": [
+			"file:/test/cases/test-file-json-object.json:$.level1"
+		]
+	},
+	"cf_var1":{
+		"searchPatterns": [
+			"cloudfoundry:service1-name1"
+		]
+	},
+	"cf_var2":{
+		"searchPatterns": [
+			"cloudfoundry:$.service1[0].credentials.username"
+		]
+	},
+	"cf_var3":{
+		"searchPatterns": [
+			"cloudfoundry:$.application_name"
+		]
+	},
+	"env_var1":{
+		"searchPatterns": [
+			"env:ENV_VAR_STRING"
+		]
+	},
+	"env_var2":{
+		"searchPatterns": [
+			"env:ENV_VAR_JSON"
+		]
+	},
+	"env_var3":{
+		"searchPatterns": [
+			"env:ENV_VAR_JSON:$.credentials.username"
+		]
+	},
+	"user_provided_var1":{
+		"searchPatterns": [
+			"user-provided:servicename1:apikey"
+		]
+	},
+	"user_provided_var2":{
+		"searchPatterns": [
+			"user-provided:servicename2:writer.apikey"
+		]
+	},
+	"user_provided_nested1":{
+		"searchPatterns": [
+			"user-provided:servicename3:nestedKey1"
+		]
+	},
+	"user_provided_nested2":{
+		"searchPatterns": [
+			"user-provided:servicename3:nestedKey3"
+		]
+	},
+	"bad_var1":{
+		"searchPatterns": [
+			"env:asdasd:$asdasd",
+			"asdasdasd:asdasd:asdasd"
+		]
+	},
+	"bad_var2":{},
+	"bad_var3":{
+		"searchPatterns":[
+			"file:/invalid-file-name.txt"
+		]
+	}
+}

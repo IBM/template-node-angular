@@ -1,0 +1,67 @@
+{
+    "extraData": {
+        "metrics": {
+            "averageServiceResponseTime": {
+                "dataType": "float",
+                "name": "Average Service Response Time",
+                "description": "The average service response time of requests belonging to service in the last minute",
+                "units": "milliseconds"
+            },
+            "throughput": {
+                "dataType": "int",
+                "name": "Throughput",
+                "description": "The request throughput in the last minute",
+                "units": "requests"
+            },
+            "errorRate": {
+                "dataType": "float",
+                "name": "Error Rate",
+                "description": "The error rate of requests during the interval.",
+                "units": "percentage"
+            }
+        },
+        "dimensions": {
+            "applicationName": {
+                "displaylabel": "Application Name",
+                "dataType": "string",
+                "name": "Application Name",
+                "description": "The name of the application."
+            },
+            "requestName": {
+                "displaylabel": "Request Name",
+                "dataType": "string",
+                "name": "Request Name",
+                "description": "Request Name"
+            },
+            "_componentType": {
+                "displaylabel": "Component Type",
+                "dataType": "string",
+                "name": "Component Type",
+                "description": "Component Type"
+            },
+            "serviceName": {
+                "displaylabel": "Service Name",
+                "dataType": "string",
+                "name": "Service Name",
+                "description": "Service Name"
+            },
+            "nameSpace": {
+                "displaylabel": "Name Space",
+                "dataType": "string",
+                "name": "Name Space",
+                "description": "Name Space"
+            }
+        }
+    },
+    "name": "ServiceInstance",
+    "displaylabel": "Service Instance",
+    "description": "Service Instance",
+    "origin": "LWDC",
+    "evaluationPoint": "rte",
+    "entityTypes": ["serviceInstance"],
+    "metadataVersion": "1.2",
+    "keyIndexName": "metadata//1.2/resourcetypes/resourcetype/serviceInstance",
+    "tags": ["metadata",
+        "topLevelResource"
+    ]
+}
