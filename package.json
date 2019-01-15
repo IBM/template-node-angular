@@ -28,9 +28,9 @@
     "log4js": "^3.0.5"
   },
   "devDependencies": {
-    "nodemon": "^1.12.1",
     "chai": "^4.0.0",
     "mocha": "^5.2.0",
+    "nodemon": "^1.12.1",
     "nyc": "^13.1.0"
   }
 }
