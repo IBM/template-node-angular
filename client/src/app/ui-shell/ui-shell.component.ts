@@ -9,23 +9,13 @@ export class UiShellComponent implements OnInit {
 
   constructor() { }
 
-  options = [
-    {
-      content: 'Option 1',
-      value: 1,
-    },
-    {
-      content: 'Option 2',
-      value: 2,
-    },
-    {
-      content: 'Option 3',
-      value: 3,
-    },
-  ];
+  patternName = 'Display Form';
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   menuClicked() { }
+
+  onPatternSelection(name: string) {
+    this.patternName = name;
+  }
 }
