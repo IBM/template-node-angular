@@ -9,23 +9,23 @@
           10L3.86 9a13.89 13.89 0 0 0-1.64 4.54l2 .35A11.9 11.9 0 0 1 5.59
           10zM16 2v2a12 12 0 0 1 0 24v2a14 14 0 0 0 0-28z" />
     </svg>
-    <ibm-sidenav-item (click)="onPatternSelection('Display Form')">Display Form</ibm-sidenav-item>
-    <ibm-sidenav-item (click)="onPatternSelection('Validating Form')">Validating Form</ibm-sidenav-item>
-    <ibm-sidenav-item (click)="onPatternSelection('Update Form')">Update Form</ibm-sidenav-item>
-    <ibm-sidenav-item (click)="onPatternSelection('Validating Form Wizard 1')">Validating Form Wizard 1</ibm-sidenav-item>
-    <ibm-sidenav-item (click)="onPatternSelection('Validating Form Wizard 2')">Validating Form Wizard 2</ibm-sidenav-item>
-    <ibm-sidenav-item (click)="onPatternSelection('Simple List')">Simple List</ibm-sidenav-item>
-    <ibm-sidenav-item (click)="onPatternSelection('Table List')">Table List</ibm-sidenav-item>
-    <ibm-sidenav-item (click)="onPatternSelection('List to List')">List to List</ibm-sidenav-item>
-    <ibm-sidenav-item (click)="onPatternSelection('Linked List')">Linked List</ibm-sidenav-item>
-    <ibm-sidenav-item (click)="onPatternSelection('Master Detail')">Master Detail</ibm-sidenav-item>
-    <ibm-sidenav-item (click)="onPatternSelection('Create, Read, Update, Delete')">Create, Read, Update, Delete</ibm-sidenav-item>
-    <ibm-sidenav-item (click)="onPatternSelection('Search List')">Search List</ibm-sidenav-item>
-    <ibm-sidenav-item (click)="onPatternSelection('Search Form')">Search Form</ibm-sidenav-item>
+    <ibm-sidenav-item [active]="patternName === 'Display Form' ? true : false" (click)="onSelect('Display Form')">Display Form</ibm-sidenav-item>
+    <ibm-sidenav-item [active]="patternName === 'Validating Form' ? true : false" (click)="onSelect('Validating Form')">Validating Form</ibm-sidenav-item>
+    <ibm-sidenav-item [active]="patternName === 'Update Form' ? true : false" (click)="onSelect('Update Form')">Update Form</ibm-sidenav-item>
+    <ibm-sidenav-item [active]="patternName === 'Validating Form Wizard 1' ? true : false" (click)="onSelect('Validating Form Wizard 1')">Validating Form Wizard 1</ibm-sidenav-item>
+    <ibm-sidenav-item [active]="patternName === 'Validating Form Wizard 2' ? true : false" (click)="onSelect('Validating Form Wizard 2')">Validating Form Wizard 2</ibm-sidenav-item>
+    <ibm-sidenav-item [active]="patternName === 'Simple List' ? true : false" (click)="onSelect('Simple List')">Simple List</ibm-sidenav-item>
+    <ibm-sidenav-item [active]="patternName === 'Table List' ? true : false" (click)="onSelect('Table List')">Table List</ibm-sidenav-item>
+    <ibm-sidenav-item [active]="patternName === 'List to List' ? true : false" (click)="onSelect('List to List')">List to List</ibm-sidenav-item>
+    <ibm-sidenav-item [active]="patternName === 'Linked List' ? true : false" (click)="onSelect('Linked List')">Linked List</ibm-sidenav-item>
+    <ibm-sidenav-item [active]="patternName === 'Master Detail' ? true : false" (click)="onSelect('Master Detail')">Master Detail</ibm-sidenav-item>
+    <ibm-sidenav-item [active]="patternName === 'Create, Read, Update, Delete' ? true : false" (click)="onSelect('Create, Read, Update, Delete')">Create, Read, Update, Delete</ibm-sidenav-item>
+    <ibm-sidenav-item [active]="patternName === 'Search List' ? true : false" (click)="onSelect('Search List')">Search List</ibm-sidenav-item>
+    <ibm-sidenav-item [active]="patternName === 'Search Form' ? true : false" (click)="onSelect('Search Form')">Search Form</ibm-sidenav-item>
   </ibm-sidenav-menu>
 </ibm-sidenav>
-<div class="bx--content" [ngSwitch]="patternName">
-  <div *ngSwitchCase="'Display Form'">Display Form</div>
+<div class="bx--content pattern-container" [ngSwitch]="patternName">
+  <app-display-form *ngSwitchCase="'Display Form'">Display Form</app-display-form>
   <div *ngSwitchCase="'Validating Form'">Validating Form</div>
   <div *ngSwitchCase="'Update Form'">Update Form</div>
   <div *ngSwitchCase="'Validating Form Wizard 1'">Validating Form Wizard 1</div>

@@ -8,3 +8,10 @@ $feature-flags: (
 button[title='Open menu'] {
   display: none;
 }
+.bx--grid {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.bx--side-nav__footer {
+  display: none;
+}

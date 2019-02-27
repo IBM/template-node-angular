@@ -15,7 +15,7 @@ export class UiShellComponent implements OnInit {
 
   menuClicked() { }
 
-  onPatternSelection(name: string) {
+  onSelect(name: string) {
     this.patternName = name;
   }
 }
