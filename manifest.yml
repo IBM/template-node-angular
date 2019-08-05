@@ -1,7 +1,7 @@
 applications:
   - instances: 1
     timeout: 180
-    name: catalyst-webui-angular
+    name: template-node-angular
     buildpack: sdk-for-nodejs
     command: npm start
     memory: 256M
