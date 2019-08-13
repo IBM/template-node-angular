@@ -8,11 +8,7 @@ podTemplate(
          name: 'node',
          image: 'node:11-stretch',
          ttyEnabled: true,
-         command: '/bin/bash',
-         workingDir: '/home/jenkins',
-         envVars: [
-            envVar(key: 'DOCKER_CONFIG', value: '/home/jenkins/.docker/'),
-         ],
+         command: '/bin/bash'
       ),
       containerTemplate(
          name: 'ibmcloud',
@@ -21,7 +17,6 @@ podTemplate(
          command: '/bin/bash',
          workingDir: '/home/jenkins',
          envVars: [
-            envVar(key: 'DOCKER_CONFIG', value: '/home/jenkins/.docker/'),
             envVar(key: 'APIURL', value: 'https://cloud.ibm.com'),
             secretEnvVar(key: 'APIKEY', secretName: 'ibmcloud-apikey', secretKey: 'password'),
             secretEnvVar(key: 'RESOURCE_GROUP', secretName: 'ibmcloud-apikey', secretKey: 'resource_group'),
