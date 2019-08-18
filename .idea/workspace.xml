@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b67240c2-ad5e-472f-ba78-d95ecee87a08" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.nyc_output/85916cd2-95cc-4b8f-be1f-a58a3206a27a.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.nyc_output/884edd5f-0ceb-4d5e-86f0-cda01dcfaf67.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/sonarqube-scan.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test/sonarqube-scan.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -108,7 +105,7 @@
       <workItem from="1565726489337" duration="49000" />
       <workItem from="1566081533920" duration="629000" />
       <workItem from="1566083697440" duration="127000" />
-      <workItem from="1566092848700" duration="613000" />
+      <workItem from="1566092848700" duration="657000" />
     </task>
     <servers />
   </component>
