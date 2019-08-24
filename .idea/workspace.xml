@@ -2,7 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b67240c2-ad5e-472f-ba78-d95ecee87a08" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stages/artifactory-stage.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chart/starter-kit-chart/.helmignore" beforeDir="false" afterPath="$PROJECT_DIR$/chart/tempalte-node-angular/.helmignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chart/starter-kit-chart/Chart.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/chart/tempalte-node-angular/Chart.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chart/starter-kit-chart/templates/NOTES.txt" beforeDir="false" afterPath="$PROJECT_DIR$/chart/tempalte-node-angular/templates/NOTES.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chart/starter-kit-chart/templates/_helpers.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/chart/tempalte-node-angular/templates/_helpers.tpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chart/starter-kit-chart/templates/deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/chart/tempalte-node-angular/templates/deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chart/starter-kit-chart/templates/ingress.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/chart/tempalte-node-angular/templates/ingress.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chart/starter-kit-chart/templates/service.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/chart/tempalte-node-angular/templates/service.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chart/starter-kit-chart/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/chart/tempalte-node-angular/values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/sonarqube-scan.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test/sonarqube-scan.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +57,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
-    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/../template-node-react/package.json" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/../template-node-react/Jenkinsfile" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -105,7 +116,8 @@
       <workItem from="1565726489337" duration="49000" />
       <workItem from="1566081533920" duration="629000" />
       <workItem from="1566083697440" duration="127000" />
-      <workItem from="1566092848700" duration="657000" />
+      <workItem from="1566092848700" duration="1251000" />
+      <workItem from="1566615049421" duration="118000" />
     </task>
     <servers />
   </component>
