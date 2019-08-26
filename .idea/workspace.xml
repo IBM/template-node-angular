@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b67240c2-ad5e-472f-ba78-d95ecee87a08" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/stages/artifactory-stage.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chart/starter-kit-chart/.helmignore" beforeDir="false" afterPath="$PROJECT_DIR$/chart/tempalte-node-angular/.helmignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chart/starter-kit-chart/Chart.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/chart/tempalte-node-angular/Chart.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chart/starter-kit-chart/templates/NOTES.txt" beforeDir="false" afterPath="$PROJECT_DIR$/chart/tempalte-node-angular/templates/NOTES.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chart/starter-kit-chart/templates/_helpers.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/chart/tempalte-node-angular/templates/_helpers.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chart/starter-kit-chart/templates/deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/chart/tempalte-node-angular/templates/deployment.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chart/starter-kit-chart/templates/ingress.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/chart/tempalte-node-angular/templates/ingress.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chart/starter-kit-chart/templates/service.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/chart/tempalte-node-angular/templates/service.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chart/starter-kit-chart/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/chart/tempalte-node-angular/values.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/sonarqube-scan.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test/sonarqube-scan.ts" afterDir="false" />
-    </list>
+    <list default="true" id="b67240c2-ad5e-472f-ba78-d95ecee87a08" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +104,7 @@
       <workItem from="1566081533920" duration="629000" />
       <workItem from="1566083697440" duration="127000" />
       <workItem from="1566092848700" duration="1251000" />
-      <workItem from="1566615049421" duration="118000" />
+      <workItem from="1566615049421" duration="587000" />
     </task>
     <servers />
   </component>
