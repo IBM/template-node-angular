@@ -230,9 +230,6 @@ spec:
                     helm template ${CHART_PATH} \
                         --name ${RELEASE_NAME} \
                         --namespace ${ENVIRONMENT_NAME} \
-                        --set nameOverride=${IMAGE_NAME} \
-                        --set image.repository=${IMAGE_REPOSITORY} \
-                        --set image.tag=${IMAGE_VERSION} \
                         --set ingress.tlsSecretName="${TLS_SECRET_NAME}" \
                         --set ingress.subdomain="${INGRESS_SUBDOMAIN}" > ./release.yaml
                     
