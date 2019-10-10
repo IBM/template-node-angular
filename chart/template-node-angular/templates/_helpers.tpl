@@ -44,7 +44,7 @@ Create chart name and version as used by the chart label.
 
 {{- define "starter-kit-chart.url" -}}
 {{- $secretName := include "starter-kit-chart.tlsSecretName" . -}}
-{{- $host := include "template-node-typescript.host" . -}}
+{{- $host := include "starter-kit-chart.host" . -}}
 {{- if $secretName -}}
 {{- printf "https://%s" $host -}}
 {{- else -}}
