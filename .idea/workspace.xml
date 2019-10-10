@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b67240c2-ad5e-472f-ba78-d95ecee87a08" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chart/template-node-angular/templates/deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/chart/template-node-angular/templates/deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -107,7 +105,7 @@
       <workItem from="1570459285197" duration="1195000" />
       <workItem from="1570553064602" duration="620000" />
       <workItem from="1570588885213" duration="897000" />
-      <workItem from="1570744244537" duration="131000" />
+      <workItem from="1570744244537" duration="305000" />
     </task>
     <servers />
   </component>
