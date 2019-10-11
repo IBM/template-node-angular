@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b67240c2-ad5e-472f-ba78-d95ecee87a08" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chart/template-node-angular/templates/_helpers.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/chart/template-node-angular/templates/_helpers.tpl" afterDir="false" />
-    </list>
+    <list default="true" id="b67240c2-ad5e-472f-ba78-d95ecee87a08" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +103,7 @@
       <workItem from="1570553064602" duration="620000" />
       <workItem from="1570588885213" duration="897000" />
       <workItem from="1570744244537" duration="597000" />
-      <workItem from="1570746070667" duration="632000" />
+      <workItem from="1570746070667" duration="767000" />
     </task>
     <servers />
   </component>
