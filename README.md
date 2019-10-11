@@ -28,7 +28,7 @@ This app contains an opinionated set of components for modern web development, i
 
 ## Steps
 
-You can [deploy this application to IBM Cloud](https://cloud.ibm.com/developer/appservice/create-app?starterKit=6b8ec7af-e3ce-3d7d-a1f4-396db8fd1184) or [build it locally](#building-locally) by cloning this repo first. Once your app is live, you can access the `/health` endpoint to build out your cloud native application.
+You can deploy this application to IBM Cloud or build it locally by cloning this repo first. Once your app is live, you can access the `/health` endpoint to build out your cloud native application.
 
 ### Deploying 
 
@@ -41,9 +41,8 @@ npm i -g @garage-catalyst/ibm-garage-cloud-cli
 
 Use the IBM Garage for Cloud CLI to register the GIT Repo with Jenkins 
 ```$bash
-igc register
+igc pipeline
 ```
-
 
 ### Building Locally
 
