@@ -1,0 +1,29 @@
+<div class="bx--grid">
+  <app-header title='Table List' 
+    subtitle='This pattern will display an array of model objects in a multi column grid/table'>
+  </app-header>
+  <div className="bx--row">
+    <div className="bx--col-xs-12">
+        <ibm-structured-list [border]="true" [selection]="true" 
+          (selected)="onSelected($event)">
+            <ibm-list-header>
+              <ibm-list-column>Name</ibm-list-column>
+              <ibm-list-column>Address</ibm-list-column>
+              <ibm-list-column>City</ibm-list-column>
+              <ibm-list-column>State</ibm-list-column>
+              <ibm-list-column>Zip Code</ibm-list-column>
+              <ibm-list-column>Country</ibm-list-column>
+            </ibm-list-header>
+            
+            <ibm-list-row *ngFor="let row of data" [value]="row.Name">
+              <ibm-list-column>{{row.Name}}</ibm-list-column>
+              <ibm-list-column>{{row.Address}}</ibm-list-column>
+              <ibm-list-column>{{row.City}}</ibm-list-column>
+              <ibm-list-column>{{row.State}}</ibm-list-column>
+              <ibm-list-column>{{row.ZipCode}}</ibm-list-column>
+              <ibm-list-column>{{row.Country}}</ibm-list-column>
+            </ibm-list-row>
+          </ibm-structured-list>
+    </div>
+  </div>
+</div>

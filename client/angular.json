@@ -61,19 +61,19 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "catalyst-webui-angular:build",
+            "browserTarget": "template-node-angular:build",
             "port": 3001
           },
           "configurations": {
             "production": {
-              "browserTarget": "catalyst-webui-angular:build:production"
+              "browserTarget": "template-node-angular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "catalyst-webui-angular:build"
+            "browserTarget": "template-node-angular:build"
           }
         },
         "test": {
@@ -107,7 +107,7 @@
         }
       }
     },
-    "catalyst-webui-angular-e2e": {
+    "template-node-angular-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -116,11 +116,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "catalyst-webui-angular:serve"
+            "devServerTarget": "template-node-angular:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "catalyst-webui-angular:serve:production"
+              "devServerTarget": "template-node-angular:serve:production"
             }
           }
         },
@@ -136,5 +136,5 @@
       }
     }
   },
-  "defaultProject": "catalyst-webui-angular"
+  "defaultProject": "template-node-angular"
 }
