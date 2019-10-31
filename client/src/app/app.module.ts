@@ -17,23 +17,28 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { UIShellModule } from 'carbon-components-angular';
+import { UIShellModule, ButtonModule, StructuredListModule } from 'carbon-components-angular';
+
 
 import { AppComponent } from './app.component';
 import { UiShellComponent } from './ui-shell/ui-shell.component';
 import { DisplayFormComponent } from './display-form/display-form.component';
 import { HeaderComponent } from './header/header.component';
+import { TableListComponent } from './table-list/table-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UiShellComponent,
     DisplayFormComponent,
-    HeaderComponent
+    HeaderComponent,
+    TableListComponent,
   ],
   imports: [
     BrowserModule,
-    UIShellModule
+    UIShellModule,
+    ButtonModule,
+    StructuredListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
