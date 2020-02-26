@@ -4,6 +4,7 @@
 global: {}
 
 replicaCount: 1
+logLevel: "debug"
 
 image:
   repository: replace
@@ -17,6 +18,9 @@ fullnameOverride: ""
 service:
   type: ClusterIP
   port: 80
+
+route:
+  enabled: false
 
 ingress:
   enabled: true
