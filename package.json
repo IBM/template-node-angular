@@ -8,6 +8,7 @@
     "node": "^8.11.1"
   },
   "scripts": {
+    "prepare": "cd client && npm install",
     "start": "node server/server.js",
     "debug": "chmod +x run-debug && ./run-debug",
     "test": "nyc mocha --exit",
