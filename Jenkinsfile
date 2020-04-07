@@ -175,7 +175,7 @@ spec:
             checkout scm
             stage('Build') {
                 sh '''#!/bin/bash
-                    set +x
+                    set -x
                     npm install
                     $(cd client && npm install)
                     npm run build --if-present
