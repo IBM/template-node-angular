@@ -177,7 +177,7 @@ spec:
                 sh '''#!/bin/bash
                     set -x
                     npm install
-                    $(cd client && npm install)
+                    cd client && npm install && cd -
                     npm run build --if-present
                 '''
             }
