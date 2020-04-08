@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  name: gsi-enablement-one.template-node-angular.dev
+  labels:
+    app: template-node-angular
+spec:
+  triggers:
+    - type: GitHub
+      github:
+        secret: secret101
+  source:
+    git:
+      uri: 'https://github.com/gsi-enablement-one/template-node-angular.git'
+      ref: dev
+  strategy:
+    jenkinsPipelineStrategy:
+      jenkinsfilePath: Jenkinsfile
+      env:
+        - name: CLOUD_NAME
+          value: openshift
+        - name: NAMESPACE
+          value: dev-aus-beta
+        - name: BRANCH
+          value: dev
