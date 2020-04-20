@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/nodejs-10
+FROM node:12.16.2
 
 RUN mkdir app
 
@@ -7,6 +7,10 @@ COPY package.json ./app
 RUN cd ./app; npm install --production
 
 COPY . ./app
+
+RUN ls -la /etc/mysql
+
+RUN rm -rf /etc/mysql
 
 ENV NODE_ENV production
 ENV PORT 3000
