@@ -4,6 +4,7 @@
 global: {}
 
 replicaCount: 1
+logLevel: "debug"
 
 image:
   repository: replace
@@ -18,6 +19,9 @@ service:
   type: ClusterIP
   port: 80
 
+route:
+  enabled: false
+
 ingress:
   enabled: true
   appid:
@@ -31,3 +35,13 @@ ingress:
   path: "/"
 
 #  tlsSecretName: ""
+
+vcsInfo:
+  repoUrl: ""
+  branch: ""
+
+partOf: ""
+
+connectsTo: ""
+
+runtime: js
