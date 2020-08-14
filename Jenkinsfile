@@ -39,12 +39,6 @@ spec:
         - configMapRef:
             name: pactbroker-config
             optional: true
-        - configMapRef:
-            name: sonarqube-config
-            optional: true
-        - secretRef:
-            name: sonarqube-access
-            optional: true
       env:
         - name: HOME
           value: ${workingDir}
@@ -80,6 +74,18 @@ spec:
           value: dev
         - name: BUILD_NUMBER
           value: ${env.BUILD_NUMBER}
+    - name: sonarqube-cli
+      image: docker.io/sonarsource/sonar-scanner-cli:4.4
+      tty: true
+      command: ["/bin/bash"]
+      workingDir: ${workingDir}
+      envFrom:
+        - configMapRef:
+            name: sonarqube-config
+            optional: true
+        - secretRef:
+            name: sonarqube-access
+            optional: true
 """
 ) {
     node(buildLabel) {
@@ -111,16 +117,25 @@ spec:
                     npm test
                 '''
             }
+        }
+        container(name: 'sonarqube-cli', shell: '/bin/bash') {
             stage('Sonar scan') {
                 sh '''#!/bin/bash
 
-                if [[ -z "${SONARQUBE_URL}" ]]; then
-                  echo "Skipping Sonar Qube step as Sonar Qube not installed or configured"
-                  exit 0
+                if ! command -v sonar-scanner &> /dev/null
+                then
+                    echo "Skipping SonarQube step, no task defined"
+                    exit 0
                 fi
 
-                set -x
-                npm run sonarqube:scan
+                if [ -n "${SONARQUBE_URL}" ]; then
+                  sonar-scanner \
+                    -Dsonar.login=${SONARQUBE_USER} \
+                    -Dsonar.password=${SONARQUBE_PASSWORD} \
+                    -Dsonar.host.url=${SONARQUBE_URL} 
+                else 
+                    echo "Skipping Sonar Qube step"
+                fi
                 '''
             }
         }
