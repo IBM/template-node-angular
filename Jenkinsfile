@@ -114,7 +114,7 @@ spec:
             stage('Test') {
                 sh '''#!/bin/bash
                     set -x
-                    npm test
+                    npm run test:coverage
                 '''
             }
         }
