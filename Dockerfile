@@ -23,11 +23,11 @@ COPY ./licenses /licenses
 
 USER default
 
-LABEL name="React UI Patterns" \
+LABEL name="Angular UI Patterns" \
       vendor="IBM" \
       version="v1.0.0" \
       release="1" \
       summary="This is an example of a container image." \
-      description="This container image will deploy a React Node App"
+      description="This container image will deploy a Angular App"
 
 CMD ["npm", "start"]
