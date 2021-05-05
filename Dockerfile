@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/nodejs-12:1-77
+FROM registry.access.redhat.com/ubi8/nodejs-14:1-28
 
 RUN mkdir app
 
@@ -17,7 +17,8 @@ WORKDIR ./app
 
 USER root
 
-RUN dnf -y update-minimal --security --sec-severity=Important --sec-severity=Critical && dnf clean all
+## Uncomment the below line to update image security content if any
+# RUN dnf -y update-minimal --security --sec-severity=Important --sec-severity=Critical && dnf clean all
 
 COPY ./licenses /licenses
 
