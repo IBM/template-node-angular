@@ -27,7 +27,7 @@ USER default
 LABEL name="ibm/template-node-angular" \
       vendor="IBM" \
       version="1" \
-      release="77" \
+      release="28" \
       summary="This is an example of a container image." \
       description="This container image will deploy a Angular App"
 
