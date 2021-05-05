@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/nodejs-14:1-28
+FROM registry.access.redhat.com/ubi8/nodejs-14:1-28.1618434924
 
 RUN mkdir app
 
