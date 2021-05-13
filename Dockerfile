@@ -1,23 +1,23 @@
 FROM registry.access.redhat.com/ubi8/nodejs-14:1-28.1618434924
 
-RUN mkdir app
+WORKDIR /opt/app-root/src/app
 
 # Install npm production packages
-COPY package.json ./app
-RUN cd ./app; npm install --production
+COPY package.json .
+RUN npm install --production
 
-COPY . ./app
+COPY . .
 
 ENV NODE_ENV production
 ENV PORT 3000
 
 EXPOSE 3000
 
-WORKDIR ./app
 
-USER root
+
 
 ## Uncomment the below line to update image security content if any
+# USER root
 # RUN dnf -y update-minimal --security --sec-severity=Important --sec-severity=Critical && dnf clean all
 
 COPY ./licenses /licenses
