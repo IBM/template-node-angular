@@ -1,46 +1,46 @@
-/**
- * Copyright 2019 IBM Corp. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the 'License'); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an 'AS IS' BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { UIShellModule, ButtonModule, StructuredListModule } from 'carbon-components-angular';
-
-
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UiShellComponent } from './ui-shell/ui-shell.component';
-import { DisplayFormComponent } from './display-form/display-form.component';
+
+// carbon-components-angular default imports
+import { IconModule, IconService, UIShellModule } from 'carbon-components-angular';
+import Notification20 from '@carbon/icons/es/notification/20';
+import UserAvatar20 from '@carbon/icons/es/user--avatar/20';
+import AppSwitcher20 from '@carbon/icons/es/app-switcher/20';
 import { HeaderComponent } from './header/header.component';
-import { TableListComponent } from './table-list/table-list.component';
+import { CatalogComponent } from './pages/catalog/catalog.component';
+import { DocsComponent } from './pages/docs/docs.component';
+import { SupportComponent } from './pages/support/support.component';
+import { Link1Component } from './pages/link1/link1.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    UiShellComponent,
-    DisplayFormComponent,
-    HeaderComponent,
-    TableListComponent,
-  ],
-  imports: [
-    BrowserModule,
-    UIShellModule,
-    ButtonModule,
-    StructuredListModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		HeaderComponent,
+		CatalogComponent,
+		DocsComponent,
+		SupportComponent,
+		Link1Component
+	],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		FormsModule,
+		AppRoutingModule,
+		UIShellModule,
+		IconModule
+	],
+	bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+	constructor(protected iconService: IconService) {
+		iconService.registerAll([
+			Notification20,
+			UserAvatar20,
+			AppSwitcher20
+		]);
+	}
+}
