@@ -1,17 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
-$feature-flags: (
-  components-x: true,
-  ui-shell: true
-);
-@import '~carbon-components/scss/globals/scss/styles.scss';
+// To change the theme uncomment the below import and which ever carbon theme you want to use
+// @import '~carbon-components/scss/globals/scss/vendor/@carbon/elements/scss/themes/theme-maps';
+// $carbon--theme: $carbon--theme--g100;
+// $carbon--theme: $carbon--theme--g90;
+// $carbon--theme: $carbon--theme--g10;
 
-button[title='Open menu'] {
-  display: none;
-}
-.bx--grid {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-.bx--side-nav__footer {
-  display: none;
-}
+@import "~carbon-components/scss/globals/scss/styles";
+
+@import "./assets/scss/carbon-override.scss";
