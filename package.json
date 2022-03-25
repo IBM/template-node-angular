@@ -23,7 +23,9 @@
     "pull": "./scripts/pull.sh $npm_package_org $npm_package_name $npm_package_version",
     "start:image": "docker run -p 3001:3000 $npm_package_name:$npm_package_version ",
     "test:coverage": "nyc --reporter=cobertura --reporter=lcov npm run test",
-    "sonarqube:scan": "npm run test:coverage && ts-node test/sonarqube-scan"
+    "sonarqube:scan": "npm run test:coverage && ts-node test/sonarqube-scan",
+    "prepare": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "author": "IBM Garage for Cloud",
   "license": "ISC",
@@ -36,7 +38,8 @@
     "ibm-cloud-env": "^0",
     "log4js": "^3.0.5",
     "node-sass": "^4.12.0",
-    "tslib": "^1.10.0"
+    "tslib": "^1.10.0",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "@types/node": "^11.13.19",
@@ -48,5 +51,6 @@
     "typescript": "^3.4.4",
     "supertest": "^4.0.2",
     "sonarqube-scanner": "^2.5.0"
-  }
+  },
+  "snyk": true
 }
