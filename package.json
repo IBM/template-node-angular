@@ -1,0 +1,52 @@
+{
+  "name": "template-node-angular",
+  "version": "1.0.0",
+  "org": "yourorg",
+  "description": "12 UI Patterns written with Angular and Node.js",
+  "private": true,
+  "engines": {
+    "node": "^8.11.1"
+  },
+  "scripts": {
+    "start": "node server/server.js",
+    "debug": "chmod +x run-debug && ./run-debug",
+    "test": "nyc mocha --exit",
+    "dev": "nodemon server/server.js",
+    "build": "cd client && npm run build",
+    "build:image": "./scripts/build.sh $npm_package_name $npm_package_version",
+    "pretest:image": "npm run build:image",
+    "test:image": "npm run test:only",
+    "test:only": "./scripts/test.sh $npm_package_name $npm_package_version",
+    "prepush": "npm test",
+    "push": "npm run push:only",
+    "push:only": "./scripts/publish.sh $npm_package_org $npm_package_name $npm_package_version",
+    "pull": "./scripts/pull.sh $npm_package_org $npm_package_name $npm_package_version",
+    "start:image": "docker run -p 3001:3000 $npm_package_name:$npm_package_version ",
+    "test:coverage": "nyc --reporter=cobertura --reporter=lcov npm run test",
+    "sonarqube:scan": "npm run test:coverage && ts-node test/sonarqube-scan"
+  },
+  "author": "IBM Garage for Cloud",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "carbon-components": "^10.4.1",
+    "carbon-components-angular": "^3.55.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.3",
+    "ibm-cloud-env": "^0",
+    "log4js": "^3.0.5",
+    "node-sass": "^4.12.0",
+    "tslib": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/node": "^11.13.19",
+    "chai": "^4.0.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.12.1",
+    "nyc": "^13.1.0",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.4",
+    "supertest": "^4.0.2",
+    "sonarqube-scanner": "^2.5.0"
+  }
+}
