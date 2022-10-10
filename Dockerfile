@@ -1,34 +1,31 @@
-FROM registry.access.redhat.com/ubi8/nodejs-14:1-28.1618434924
-
-WORKDIR /opt/app-root/src/app
-
-# Install npm production packages
-COPY package.json .
-RUN npm install --production
-
-COPY . .
-
-ENV NODE_ENV production
-ENV PORT 3000
-
-EXPOSE 3000
-
-
-
-
-## Uncomment the below line to update image security content if any
-# USER root
-# RUN dnf -y update-minimal --security --sec-severity=Important --sec-severity=Critical && dnf clean all
-
-COPY ./licenses /licenses
+FROM registry.access.redhat.com/ubi8/nodejs-16:1-52 as builder
 
 USER default
 
-LABEL name="ibm/template-node-angular" \
-      vendor="IBM" \
-      version="1" \
-      release="28.1618434924" \
-      summary="This is an example of a container image." \
-      description="This container image will deploy a Angular App"
+WORKDIR /opt/app-root/src
+
+COPY --chown=default:root . .
+RUN cd client && \
+    npm install && \
+    npm run build && \
+    cd ..
+
+FROM registry.access.redhat.com/ubi8/nodejs-16-minimal:1-59
+
+USER 1001
+
+WORKDIR /opt/app-root/src
+
+COPY --from=builder --chown=1001:0 /opt/app-root/src/client ./client
+COPY --chown=1001:0 public ./public
+COPY --chown=1001:0 package.json package-lock.json ./
+COPY --chown=1001:0 server ./server
+
+RUN npm install --production
+
+ENV NODE_ENV=production
+ENV HOST=0.0.0.0 PORT=3000
+
+EXPOSE 3000/tcp
 
 CMD ["npm", "start"]

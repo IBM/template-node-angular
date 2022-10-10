@@ -5,7 +5,7 @@
   "description": "12 UI Patterns written with Angular and Node.js",
   "private": true,
   "engines": {
-    "node": "^8.11.1"
+    "node": ">= 14"
   },
   "scripts": {
     "start": "node server/server.js",
@@ -23,30 +23,33 @@
     "pull": "./scripts/pull.sh $npm_package_org $npm_package_name $npm_package_version",
     "start:image": "docker run -p 3001:3000 $npm_package_name:$npm_package_version ",
     "test:coverage": "nyc --reporter=cobertura --reporter=lcov npm run test",
-    "sonarqube:scan": "npm run test:coverage && ts-node test/sonarqube-scan"
+    "sonarqube:scan": "npm run test:coverage && ts-node test/sonarqube-scan",
+    "prepare": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "author": "IBM Garage for Cloud",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "carbon-components": "^10.4.1",
-    "carbon-components-angular": "^3.55.0",
-    "cookie-parser": "^1.4.3",
-    "express": "^4.15.3",
-    "ibm-cloud-env": "^0",
-    "log4js": "^3.0.5",
-    "node-sass": "^4.12.0",
+    "@snyk/protect": "latest",
+    "body-parser": "^1.20.1",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2",
+    "http-proxy-middleware": "^2.0.6",
+    "ibm-cloud-env": "^0.3.0",
+    "log4js": "^6.4.0",
+    "node-sass": "^7.0.2",
     "tslib": "^1.10.0"
   },
   "devDependencies": {
-    "@types/node": "^11.13.19",
-    "chai": "^4.0.0",
-    "mocha": "^5.2.0",
-    "nodemon": "^1.12.1",
-    "nyc": "^13.1.0",
-    "ts-node": "^8.1.0",
-    "typescript": "^3.4.4",
-    "supertest": "^4.0.2",
-    "sonarqube-scanner": "^2.5.0"
-  }
+    "@types/node": "^18.8.3",
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0",
+    "nodemon": "^2.0.20",
+    "nyc": "^15.1.0",
+    "sonarqube-scanner": "^2.8.2",
+    "supertest": "^6.3.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
+  },
+  "snyk": true
 }
