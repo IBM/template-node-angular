@@ -5,10 +5,11 @@ USER default
 WORKDIR /opt/app-root/src
 
 COPY --chown=default:root . .
-RUN cd client && \
-    npm install && \
-    npm run build && \
-    cd ..
+
+WORKDIR /opt/app-root/src/client
+RUN npm install && \
+    npm run build
+WORKDIR /opt/app-root/src
 
 FROM registry.access.redhat.com/ubi8/nodejs-16-minimal:1-59
 
