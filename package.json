@@ -32,7 +32,7 @@
     "carbon-components": "^10.4.1",
     "carbon-components-angular": "^3.55.0",
     "cookie-parser": "^1.4.3",
-    "express": "^4.15.3",
+    "express": "^4.19.2",
     "ibm-cloud-env": "^0",
     "log4js": "^3.0.5",
     "node-sass": "^4.12.0",
